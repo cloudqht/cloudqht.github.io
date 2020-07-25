@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cloudqht.github.io/"/>
-  <updated>2019-10-15T02:31:50.871Z</updated>
+  <updated>2020-07-25T07:57:44.495Z</updated>
   <id>https://cloudqht.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>朝游北海暮苍梧</title>
+    <link href="https://cloudqht.github.io/2020/07/25/%E5%8D%9A%E5%AE%A2%E5%BD%92%E6%9D%A5/"/>
+    <id>https://cloudqht.github.io/2020/07/25/博客归来/</id>
+    <published>2020-07-25T07:42:01.000Z</published>
+    <updated>2020-07-25T07:57:44.495Z</updated>
+    
+    <content type="html"><![CDATA[<p>一年后更换硬盘，重新捡起以前的博客</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;一年后更换硬盘，重新捡起以前的博客&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="日常" scheme="https://cloudqht.github.io/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Linux下安装redis踩坑</title>
