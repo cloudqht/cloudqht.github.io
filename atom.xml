@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cloudqht.github.io/"/>
-  <updated>2020-09-21T15:10:27.084Z</updated>
+  <updated>2020-09-21T15:22:55.329Z</updated>
   <id>https://cloudqht.github.io/</id>
   
   <author>
@@ -21,15 +21,15 @@
     <link href="https://cloudqht.github.io/2020/09/21/ssh%E7%9B%B8%E5%85%B3/"/>
     <id>https://cloudqht.github.io/2020/09/21/ssh相关/</id>
     <published>2020-09-21T14:48:24.000Z</published>
-    <updated>2020-09-21T15:10:27.084Z</updated>
+    <updated>2020-09-21T15:22:55.329Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="ssh免密登录"><a href="#ssh免密登录" class="headerlink" title="ssh免密登录"></a>ssh免密登录</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br><span class="line">ssh-copy-id -<span class="selector-tag">i</span> ~/.ssh/id_rsa<span class="selector-class">.pub</span> root@主机名</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h3 id="Windows10下github生成SSH公钥"><a href="#Windows10下github生成SSH公钥" class="headerlink" title="Windows10下github生成SSH公钥"></a>Windows10下github生成SSH公钥</h3><ol><li>安装git，从程序目录打开 “Git Bash” </li><li><code>ssh-keygen -t rsa -C &quot;email@email.com&quot;</code>,email@email.com是自己github账号 </li><li>提醒你输入key的名称，你可以不用输入，一路回车，就OK了；</li><li>一般会在用户目录下生成三个文件，例如我生成的文件在C:\Users\SmallHacker.ssh目录下 </li><li>进入该用户的目录下用命令cat id_rsa.pub打开文件并复制里面的全部内容； </li><li>打开github账号–&gt;Settings–&gt;SSH and GPG keys–&gt;New SSH key,并把复制好的内容全部粘贴进去 </li></ol><h3 id="ssh免密登录"><a href="#ssh免密登录" class="headerlink" title="ssh免密登录"></a>ssh免密登录</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br><span class="line">ssh-copy-id -<span class="selector-tag">i</span> ~/.ssh/id_rsa<span class="selector-class">.pub</span> root@主机名</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h3 id=&quot;ssh免密登录&quot;&gt;&lt;a href=&quot;#ssh免密登录&quot; class=&quot;headerlink&quot; title=&quot;ssh免密登录&quot;&gt;&lt;/a&gt;ssh免密登录&lt;/h3&gt;&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class
+        &lt;h3 id=&quot;Windows10下github生成SSH公钥&quot;&gt;&lt;a href=&quot;#Windows10下github生成SSH公钥&quot; class=&quot;headerlink&quot; title=&quot;Windows10下github生成SSH公钥&quot;&gt;&lt;/a&gt;Windows10下github生
       
     
     </summary>
