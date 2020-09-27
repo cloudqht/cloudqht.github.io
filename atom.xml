@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cloudqht.github.io/"/>
-  <updated>2020-09-21T15:22:55.329Z</updated>
+  <updated>2020-09-27T05:57:50.334Z</updated>
   <id>https://cloudqht.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>clion配置远程Linux终端调试C++ build乱码解决方法</title>
+    <link href="https://cloudqht.github.io/2020/09/27/clion%E9%85%8D%E7%BD%AE%E8%BF%9C%E7%A8%8BLinux%E7%BB%88%E7%AB%AF%E8%B0%83%E8%AF%95C-build%E4%B9%B1%E7%A0%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>https://cloudqht.github.io/2020/09/27/clion配置远程Linux终端调试C-build乱码解决方法/</id>
+    <published>2020-09-27T05:47:19.000Z</published>
+    <updated>2020-09-27T05:57:50.334Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>clion中help-&gt;Edit Custom VMoptions </li><li>在最后面加入两行代码: <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-Dconsole.<span class="attribute">encoding</span>=UTF-8 </span><br><span class="line">-Dfile.<span class="attribute">encoding</span>=UTF-8</span><br></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;clion中help-&amp;gt;Edit Custom VMoptions &lt;/li&gt;
+&lt;li&gt;在最后面加入两行代码: &lt;figure class=&quot;highlight routeros&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;s
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://cloudqht.github.io/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="https://cloudqht.github.io/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>ssh相关</title>
