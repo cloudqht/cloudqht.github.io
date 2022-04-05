@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cloudqht.github.io/"/>
-  <updated>2022-04-05T13:25:18.188Z</updated>
+  <updated>2022-04-05T14:21:44.059Z</updated>
   <id>https://cloudqht.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>杀手·价值连城的幸运</title>
+    <link href="https://cloudqht.github.io/2022/04/05/%E6%9D%80%E6%89%8B%C2%B7%E4%BB%B7%E5%80%BC%E8%BF%9E%E5%9F%8E%E7%9A%84%E5%B9%B8%E8%BF%90/"/>
+    <id>https://cloudqht.github.io/2022/04/05/杀手·价值连城的幸运/</id>
+    <published>2022-04-05T14:21:07.000Z</published>
+    <updated>2022-04-05T14:21:44.059Z</updated>
+    
+    <content type="html"><![CDATA[<p>幸运之神啊，虽然我已放弃了爱情，但，如果还能反悔的话，请保佑我明天下午有一场幸福美好的约会。</p><p>寂寞的人，怕的不是寂寞。而是不知不觉习惯了孤独。</p><p>过几年，他会慢慢忘记他需要交一个女朋友。</p><p>再过几年，床底下的蝉堡就会厚得像一本字典。</p><p>再过得了几年，如果没有被杀死，他会成为一个杀手传奇。然后很寂寞。</p><p>寂寞到，只是杀人再也不够了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;幸运之神啊，虽然我已放弃了爱情，但，如果还能反悔的话，请保佑我明天下午有一场幸福美好的约会。&lt;/p&gt;
+&lt;p&gt;寂寞的人，怕的不是寂寞。而是不知不觉习惯了孤独。&lt;/p&gt;
+&lt;p&gt;过几年，他会慢慢忘记他需要交一个女朋友。&lt;/p&gt;
+&lt;p&gt;再过几年，床底下的蝉堡就会厚得像一本字典。&lt;/
+      
+    
+    </summary>
+    
+    
+      <category term="小说" scheme="https://cloudqht.github.io/tags/%E5%B0%8F%E8%AF%B4/"/>
+    
+  </entry>
   
   <entry>
     <title>聊天演进</title>
@@ -463,31 +489,6 @@
       
       
         &lt;h2 id=&quot;利用完全二叉树的性质鉴别&quot;&gt;&lt;a href=&quot;#利用完全二叉树的性质鉴别&quot; class=&quot;headerlink&quot; title=&quot;利用完全二叉树的性质鉴别&quot;&gt;&lt;/a&gt;利用完全二叉树的性质鉴别&lt;/h2&gt;&lt;h3 id=&quot;完全二叉树的1-n结点与满二叉树相同&quot;&gt;&lt;a hr
-      
-    
-    </summary>
-    
-      <category term="数据结构" scheme="https://cloudqht.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="二叉树" scheme="https://cloudqht.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>二叉树的建立</title>
-    <link href="https://cloudqht.github.io/2018/09/25/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%BB%BA%E7%AB%8B/"/>
-    <id>https://cloudqht.github.io/2018/09/25/二叉树的建立/</id>
-    <published>2018-09-25T15:56:19.000Z</published>
-    <updated>2020-07-25T06:15:37.471Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="由先序遍历序列和中序遍历序列确定二叉树"><a href="#由先序遍历序列和中序遍历序列确定二叉树" class="headerlink" title="由先序遍历序列和中序遍历序列确定二叉树"></a>由先序遍历序列和中序遍历序列确定二叉树</h2><figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//A,B数组存放先序和中序结点的data</span></span><br><span class="line"><span class="comment">//l1,l2,h1,h2分别为先序和中序的第一和最后一个结点下标</span></span><br><span class="line">BiTree PreInCreate(Elemtype A[], Elemtype B[], l1, h1, l2, h2)&#123; </span><br><span class="line"><span class="comment">//建立根节点</span></span><br><span class="line">BiTNode root = new BiTNode;<span class="comment">//c写法为(BiTNode*)malloc(sizeof(BiTNode));</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">root</span>-&gt;</span><span class="keyword">data</span>=A[l1];</span><br><span class="line"></span><br><span class="line"><span class="comment">//找到先序遍历头结点A[l1]结点在中序遍历中的位置</span></span><br><span class="line"><span class="function"><span class="title">for</span>(int i=l2;B[i]!=root-&gt;</span><span class="keyword">data</span>;i++);</span><br><span class="line"></span><br><span class="line"><span class="comment">//左右子树长度</span></span><br><span class="line">int llen=i-l2;</span><br><span class="line">int rlen=h2-i;</span><br><span class="line"></span><br><span class="line"><span class="comment">//递归建立左右子树，若len=0,则左右结点置为NULL</span></span><br><span class="line"><span class="keyword">if</span>(llen)</span><br><span class="line"><span class="function"><span class="title">root</span>-&gt;</span>lchild=PreInCreate(Elemtype A[], Elemtype B[],</span><br><span class="line"> l1+<span class="number">1</span>, l1+llen, l2, l2+llen-<span class="number">1</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="function"><span class="title">root</span>-&gt;</span>lchild=NULL;</span><br><span class="line"><span class="keyword">if</span>(rlen)</span><br><span class="line"><span class="function"><span class="title">root</span>-&gt;</span>rchild=PreInCreate(Elemtype A[], Elemtype B[],</span><br><span class="line"> h1-rlen+<span class="number">1</span>, h1, h2-rlen+<span class="number">1</span>, h2);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="function"><span class="title">root</span>-&gt;</span>rchild=NULL;</span><br><span class="line"></span><br><span class="line">return root; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;由先序遍历序列和中序遍历序列确定二叉树&quot;&gt;&lt;a href=&quot;#由先序遍历序列和中序遍历序列确定二叉树&quot; class=&quot;headerlink&quot; title=&quot;由先序遍历序列和中序遍历序列确定二叉树&quot;&gt;&lt;/a&gt;由先序遍历序列和中序遍历序列确定二叉树&lt;/h2&gt;&lt;figu
       
     
     </summary>
