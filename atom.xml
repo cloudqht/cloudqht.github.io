@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cloudqht.github.io/"/>
-  <updated>2022-04-05T02:33:59.429Z</updated>
+  <updated>2022-04-05T13:25:18.188Z</updated>
   <id>https://cloudqht.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>聊天演进</title>
+    <link href="https://cloudqht.github.io/2022/04/05/%E8%81%8A%E5%A4%A9%E6%BC%94%E8%BF%9B/"/>
+    <id>https://cloudqht.github.io/2022/04/05/聊天演进/</id>
+    <published>2022-04-05T13:20:12.000Z</published>
+    <updated>2022-04-05T13:25:18.188Z</updated>
+    
+    <content type="html"><![CDATA[<p>我可能是一个没有多少内涵的人<br>聊多了乏味无话可说<br>各个领域谈完了不想重复<br>如何解决<br>应该是解决不了<br>解决不了就被动一点吧<br>可能停一阵子<br>更有助于放弃不切实际的幻想<br>回到以前的生活方式吧，无缘注定无缘</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;我可能是一个没有多少内涵的人&lt;br&gt;聊多了乏味无话可说&lt;br&gt;各个领域谈完了不想重复&lt;br&gt;如何解决&lt;br&gt;应该是解决不了&lt;br&gt;解决不了就被动一点吧&lt;br&gt;可能停一阵子&lt;br&gt;更有助于放弃不切实际的幻想&lt;br&gt;回到以前的生活方式吧，无缘注定无缘&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="心路历程" scheme="https://cloudqht.github.io/tags/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>放弃不切实际的幻想</title>
@@ -464,32 +488,6 @@
       
       
         &lt;h2 id=&quot;由先序遍历序列和中序遍历序列确定二叉树&quot;&gt;&lt;a href=&quot;#由先序遍历序列和中序遍历序列确定二叉树&quot; class=&quot;headerlink&quot; title=&quot;由先序遍历序列和中序遍历序列确定二叉树&quot;&gt;&lt;/a&gt;由先序遍历序列和中序遍历序列确定二叉树&lt;/h2&gt;&lt;figu
-      
-    
-    </summary>
-    
-      <category term="数据结构" scheme="https://cloudqht.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="二叉树" scheme="https://cloudqht.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>二叉树的遍历</title>
-    <link href="https://cloudqht.github.io/2018/09/23/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/"/>
-    <id>https://cloudqht.github.io/2018/09/23/二叉树的遍历/</id>
-    <published>2018-09-23T13:50:18.000Z</published>
-    <updated>2020-07-25T06:15:37.471Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h1><ul><li><h2 id="后序非递归遍历"><a href="#后序非递归遍历" class="headerlink" title="后序非递归遍历"></a>后序非递归遍历</h2><code>利用栈进行非递归遍历。</code><br>算法思想：因为后序非递归遍历二叉树的顺序是先访问左子树，再访问右子树，最后访问根结点，用堆栈存储结点，必须分清返回根结点时，是从左子树返回的，还是从右子树返回的。故要使用辅助指针 r，其指向最近访问过的结点。 <figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">void PostOrder(Bitree T)&#123; </span><br><span class="line">InitStack(S); </span><br><span class="line">p=T; </span><br><span class="line">r=NULL;<span class="comment">//标志指针 </span></span><br><span class="line"><span class="keyword">while</span>(p||!isEmpty(S))&#123; </span><br><span class="line"><span class="keyword">if</span>(p)&#123;<span class="comment">//走到最左边 </span></span><br><span class="line">push(S,p);<span class="comment">//结点入栈</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">GetTop(S,p);<span class="comment">//取栈顶结点</span></span><br><span class="line"><span class="function"><span class="title">if</span>(p-&gt;</span><span class="function"><span class="title">rchild</span>&amp;&amp;p-&gt;</span>rchild!=r)&#123;</span><br><span class="line"><span class="function"><span class="title">p</span>=p-&gt;</span>rchild;<span class="comment">//转向右</span></span><br><span class="line">push(S,p);</span><br><span class="line"><span class="function"><span class="title">p</span>=p-&gt;</span>lchild;<span class="comment">//再向左</span></span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">pop(S,p);</span><br><span class="line">visit(p);</span><br><span class="line">r=p;<span class="comment">//指向最近访问的结点</span></span><br><span class="line">p=NULL;</span><br><span class="line">&#125;</span><br><span class="line">&#125;<span class="comment">//else</span></span><br><span class="line">&#125;<span class="comment">//while</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h1 id="通过遍历求二叉树的高"><a href="#通过遍历求二叉树的高" class="headerlink" title="通过遍历求二叉树的高"></a>通过遍历求二叉树的高</h1><ul><li><h2 id="（非递归）通过队列进行层次遍历求二叉树的高"><a href="#（非递归）通过队列进行层次遍历求二叉树的高" class="headerlink" title="（非递归）通过队列进行层次遍历求二叉树的高"></a>（非递归）通过队列进行层次遍历求二叉树的高</h2><figure class="highlight zephir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//当level+1时，出队结点front结点正好是该层的最右结点， </span></span><br><span class="line"><span class="comment">//而且此时rear结点为下层的最右结点。因为front结点右孩子就是rear结点 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> Btdepth1(BiTree T)&#123;</span><br><span class="line"><span class="keyword">int</span> level=<span class="number">0</span>,rear=<span class="number">-1</span>,front=<span class="number">-1</span>;</span><br><span class="line"><span class="keyword">int</span> last=<span class="number">0</span>;<span class="comment">//标志尾指针即二叉树本层的最右结点</span></span><br><span class="line">BiTree Q[MaxSize], p;</span><br><span class="line">Q[++rear]=T;</span><br><span class="line"><span class="keyword">while</span>(front&lt;rear)&#123;</span><br><span class="line">p=Q[++front];</span><br><span class="line"><span class="keyword">if</span>(p-&gt;lchild!=<span class="keyword">NULL</span>)&#123;<span class="comment">//若有左右子树，将左右子结点入队</span></span><br><span class="line">Q[++rear]=p-&gt;lchild;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(p-&gt;rchild!=<span class="keyword">NULL</span>)&#123;</span><br><span class="line">Q[++rear]=p-&gt;rchild;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(front==last)&#123;<span class="comment">//出队结点正好是层次遍历该层的最右结点，则level+1</span></span><br><span class="line">level++;</span><br><span class="line">last=rear;<span class="comment">//last结点重新指向下层的最右结点</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><h2 id="递归方法求二叉树的高"><a href="#递归方法求二叉树的高" class="headerlink" title="递归方法求二叉树的高"></a>递归方法求二叉树的高</h2><figure class="highlight zephir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> Btdepth2(BiTree T)&#123;</span><br><span class="line"><span class="keyword">if</span>(T==<span class="keyword">NULL</span>)</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> ldep=Btdepth2(T-&gt;lchild);</span><br><span class="line"><span class="keyword">int</span> rdep=Btdepth2(T-&gt;rchild);</span><br><span class="line"><span class="keyword">if</span>(ldep&gt;rdep)</span><br><span class="line"><span class="keyword">return</span> ldep+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="keyword">return</span> rdep+<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h1 id="判断是否是小根堆"><a href="#判断是否是小根堆" class="headerlink" title="判断是否是小根堆"></a>判断是否是小根堆</h1><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//将顺序表L[<span class="number">1.</span>..n]看成一个完全二叉树，扫描所有分支结点，当遇到孩子结点的关键字小于根节点关键字返回<span class="literal">false</span>,扫描完则返回<span class="literal">true</span>.</span><br><span class="line">bool IsMinHeap(ElemType A[], int <span class="built_in">len</span>)&#123;</span><br><span class="line">//判断是否有单分支结点</span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">len</span>%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">//小根堆特点：双亲结点小于子结点，子结点顺序随意，此处<span class="built_in">len</span>/<span class="number">2</span>为双亲结点，<span class="built_in">len</span>结点为子结点</span><br><span class="line"><span class="keyword">if</span>(A[<span class="built_in">len</span>/<span class="number">2</span>]&gt;A[<span class="built_in">len</span>])&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="built_in">len</span>/<span class="number">2</span><span class="number">-1</span>;i&gt;<span class="number">0</span>;i<span class="comment">--)</span></span><br><span class="line"><span class="keyword">if</span>(A[i]&gt;A[i*<span class="number">2</span>]||A[i]&gt;A[i*<span class="number">2</span>+<span class="number">1</span>])</span><br><span class="line"><span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="built_in">len</span>/<span class="number">2</span>;i&gt;<span class="number">0</span>;i<span class="comment">--)</span></span><br><span class="line"><span class="keyword">if</span>(A[i]&gt;A[i*<span class="number">2</span>]||A[i]&gt;A[i*<span class="number">2</span>+<span class="number">1</span>])</span><br><span class="line"><span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;后序遍历&quot;&gt;&lt;a href=&quot;#后序遍历&quot; class=&quot;headerlink&quot; title=&quot;后序遍历&quot;&gt;&lt;/a&gt;后序遍历&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;h2 id=&quot;后序非递归遍历&quot;&gt;&lt;a href=&quot;#后序非递归遍历&quot; class=&quot;headerlink&quot; t
       
     
     </summary>
