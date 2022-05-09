@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cloudqht.github.io/"/>
-  <updated>2022-04-05T14:21:44.059Z</updated>
+  <updated>2022-05-09T01:14:08.916Z</updated>
   <id>https://cloudqht.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>太折磨了</title>
+    <link href="https://cloudqht.github.io/2022/05/09/%E5%A4%AA%E6%8A%98%E7%A3%A8%E4%BA%86/"/>
+    <id>https://cloudqht.github.io/2022/05/09/太折磨了/</id>
+    <published>2022-05-09T00:55:43.000Z</published>
+    <updated>2022-05-09T01:14:08.916Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是喜欢一个人的感觉吗？<br>脑海中挥之不去的，各种不切实际的幻想<br>充斥在大脑中，使其兴奋的睡不好觉<br>这种感觉 亦或是 情感需要一个宣泄口？<br>找不到解决这个问题的思路 因果太乱了<br>幸亏高中他妈的 没有跟好看的女生做同桌<br>卓某百年功力，可熬得过几个春宵？<br>太能想了我这脑子 能不能在别的地方多来点创造力啊？<br>别折磨我了行不行啊</p><p>别幻想了我操<br>她对你没有感觉<br>她对别的人也这样<br>感动自己，折磨自己，说不定还恶心别人<br>属于是纯纯的小丑了<br>都让我给丑完了<br>是不是见的人太少了啊？<br>你都喜欢她什么啊？<br>脸也不是很漂亮，胸也不大身材也就一般<br>但就是喜欢，我能不能别这么贱啊<br>应该是见的女人太少 正处于雄性的发情期<br>目前暂时控制不住大脑去想了<br>只能相信时间的威力，这段特殊时期过去以后<br>一个较长的时间周期里 非常少的见面 应该会让大脑渐渐遗忘吧<br>坚决不当龟男不当舔狗<br>应该不会再试第二次了<br>能不能试着去享受这种单相思的感觉<br>和她并肩走在路上都有单方面的恋爱感觉<br>这波属于是血赚了</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;这是喜欢一个人的感觉吗？&lt;br&gt;脑海中挥之不去的，各种不切实际的幻想&lt;br&gt;充斥在大脑中，使其兴奋的睡不好觉&lt;br&gt;这种感觉 亦或是 情感需要一个宣泄口？&lt;br&gt;找不到解决这个问题的思路 因果太乱了&lt;br&gt;幸亏高中他妈的 没有跟好看的女生做同桌&lt;br&gt;卓某百年功力，可熬得过
+      
+    
+    </summary>
+    
+    
+      <category term="心路历程" scheme="https://cloudqht.github.io/tags/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>杀手·价值连城的幸运</title>
@@ -464,31 +487,6 @@
       
       
         &lt;h1 id=&quot;二叉排序树（二叉查找树）&quot;&gt;&lt;a href=&quot;#二叉排序树（二叉查找树）&quot; class=&quot;headerlink&quot; title=&quot;二叉排序树（二叉查找树）&quot;&gt;&lt;/a&gt;二叉排序树（二叉查找树）&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;特点：左子树值&amp;lt;结点值&amp;lt;右子树值
-      
-    
-    </summary>
-    
-      <category term="数据结构" scheme="https://cloudqht.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="二叉树" scheme="https://cloudqht.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>完全二叉树的鉴别</title>
-    <link href="https://cloudqht.github.io/2018/09/26/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%89%B4%E5%88%AB/"/>
-    <id>https://cloudqht.github.io/2018/09/26/完全二叉树的鉴别/</id>
-    <published>2018-09-26T10:38:52.000Z</published>
-    <updated>2020-07-25T06:15:37.487Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="利用完全二叉树的性质鉴别"><a href="#利用完全二叉树的性质鉴别" class="headerlink" title="利用完全二叉树的性质鉴别"></a>利用完全二叉树的性质鉴别</h2><h3 id="完全二叉树的1-n结点与满二叉树相同"><a href="#完全二叉树的1-n结点与满二叉树相同" class="headerlink" title="完全二叉树的1-n结点与满二叉树相同"></a><code>完全二叉树的1-n结点与满二叉树相同</code></h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">bool isComplete(BiTree T)&#123;</span><br><span class="line"><span class="keyword">if</span>(!T)</span><br><span class="line"><span class="keyword">return</span> <span class="number">1</span>;<span class="comment">//空二叉树为完全二叉树</span></span><br><span class="line">InitQueue Q;</span><br><span class="line">BiTree p;</span><br><span class="line">EnQueue(Q,T);</span><br><span class="line"><span class="keyword">while</span>(!IsEmpty(Q))&#123;</span><br><span class="line">DeQueue(Q,p);</span><br><span class="line"><span class="keyword">if</span>(p)&#123;</span><br><span class="line">EnQueue(Q,p-&gt;lchild);</span><br><span class="line">EnQueue(Q,p-&gt;rchild);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line"><span class="keyword">while</span>(!IsEmpty(Q))&#123;</span><br><span class="line">DeQueue(Q,p);</span><br><span class="line"><span class="keyword">if</span>(p)</span><br><span class="line"><span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;利用完全二叉树的性质鉴别&quot;&gt;&lt;a href=&quot;#利用完全二叉树的性质鉴别&quot; class=&quot;headerlink&quot; title=&quot;利用完全二叉树的性质鉴别&quot;&gt;&lt;/a&gt;利用完全二叉树的性质鉴别&lt;/h2&gt;&lt;h3 id=&quot;完全二叉树的1-n结点与满二叉树相同&quot;&gt;&lt;a hr
       
     
     </summary>
