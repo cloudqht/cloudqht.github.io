@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cloudqht.github.io/"/>
-  <updated>2022-11-13T05:54:07.071Z</updated>
+  <updated>2023-01-17T01:59:13.990Z</updated>
   <id>https://cloudqht.github.io/</id>
   
   <author>
@@ -15,6 +15,59 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>maven &lt;scope&gt;大坑</title>
+    <link href="https://cloudqht.github.io/2023/01/17/maven-scope-%E5%A4%A7%E5%9D%91/"/>
+    <id>https://cloudqht.github.io/2023/01/17/maven-scope-大坑/</id>
+    <published>2023-01-17T01:52:20.000Z</published>
+    <updated>2023-01-17T01:59:13.990Z</updated>
+    
+    <content type="html"><![CDATA[<p>罪魁祸首： </p><pre><code>&lt;dependency&gt;    &lt;groupId&gt;org.ssssssss&lt;/groupId&gt;    &lt;artifactId&gt;magic-api-plugin-git&lt;/artifactId&gt;    &lt;version&gt;2.0.2&lt;/version&gt;&lt;!--&lt;scope&gt;test&lt;/scope&gt;--&gt;&lt;/dependency&gt;</code></pre><p>scope的值有以下几个：compile、test、provided、runtime、system。</p><p>（1）compile：这个也是scope的默认值，表示这个Jar文件与程序一起进行编译。如果在我们的程序中使用了其他的Jar包，而没有把这个依赖的Jar文件一起进行编译，就会提示：找不到指定的类（Class）。即：将这个依赖的Jar文件放在ClassPath中，从而让我们的程序可以找到这个Jar文件，将我们的程序打成War文件时候，就会将compile的Jar文件也一起放进来。</p><p><strong>（2）test：用于表示这个Jar文件只有在test阶段的时候使用，在我们进行·mvn package·的时候，并不会将这个依赖的Jar文件一起进行打包。只有在·mvn test·时候才使用的Jar文件，从而完成我们的测试用例。</strong></p><p>（3）provided：provided表示提供，由正式运行环境提供这个Jar文件，本程序不提供。当我们程序想使用某一个类的时候，如果不引入对应的Jar文件，就会提示找不到类，而我们又不想将这个Jar文件一起打包的时候，使用provided。provided这个Jar文件只是让我们的程序可以编译通过，由运行环境提供这个Jar文件。</p><p>（4）runtime：在程序运行的时候使用这个Jar文件，而在我们的程序中没有使用Jar文件。例如：我们程序使用了一个第三方Jar文件（A.jar），而这个第三方Jar文件中使用了某一个Jar（B.jar），而B.jar的scope为provided，表示由正式运行程序提供，我们的程序虽然没有使用B.jar中的类，当时我们也必须将B.jar进行依赖，从而使A.jar可以找到B.Jar文件，这时候将B.jar设置为runtime，表示运行时候加入这个Jar文件。这个Jar文件会打包到我们的程序中。</p><p>（5）system：与provided相同，只是从运行的系统找对应的Jar文件，必须与<systempath>配合使用，指定Jar文件所在的位置。</systempath></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;罪魁祸首： &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.ssssssss&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;magic-api-plugin-git&amp;lt;/a
+      
+    
+    </summary>
+    
+      <category term="SpringBoot" scheme="https://cloudqht.github.io/categories/SpringBoot/"/>
+    
+    
+      <category term="SpringBoot" scheme="https://cloudqht.github.io/tags/SpringBoot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>@EnableConfigurationProperties注解作用</title>
+    <link href="https://cloudqht.github.io/2023/01/09/EnableConfigurationProperties%E6%B3%A8%E8%A7%A3%E4%BD%9C%E7%94%A8/"/>
+    <id>https://cloudqht.github.io/2023/01/09/EnableConfigurationProperties注解作用/</id>
+    <published>2023-01-09T11:55:26.000Z</published>
+    <updated>2023-01-17T01:48:35.844Z</updated>
+    
+    <content type="html"><![CDATA[<p>@EnableConfigurationProperties({ConfigBean.class})<br>后才能@ConfigurationProperties(prefix=”xxx”)<br>而后才能@Autowired注入<br>具体：<a href="https://blog.csdn.net/q258523454/article/details/104429497" target="_blank" rel="noopener">https://blog.csdn.net/q258523454/article/details/104429497</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;@EnableConfigurationProperties({ConfigBean.class})&lt;br&gt;后才能@ConfigurationProperties(prefix=”xxx”)&lt;br&gt;而后才能@Autowired注入&lt;br&gt;具体：&lt;a href=&quot;https:
+      
+    
+    </summary>
+    
+      <category term="SpringBoot" scheme="https://cloudqht.github.io/categories/SpringBoot/"/>
+    
+    
+      <category term="SpringBoot" scheme="https://cloudqht.github.io/tags/SpringBoot/"/>
+    
+  </entry>
   
   <entry>
     <title>jgit remote pull 时错误</title>
@@ -45,10 +98,10 @@
   
   <entry>
     <title>日照涛掩 龙舞刀妖</title>
-    <link href="https://cloudqht.github.io/2022/10/29/%E6%97%A5%E7%85%A7%E6%B6%9B%E7%94%9F%20%E9%BE%99%E8%88%9E%E5%88%80%E5%A6%96/"/>
-    <id>https://cloudqht.github.io/2022/10/29/日照涛生 龙舞刀妖/</id>
+    <link href="https://cloudqht.github.io/2022/10/29/%E6%97%A5%E7%85%A7%E6%B6%9B%E7%94%9F-%E9%BE%99%E8%88%9E%E5%88%80%E5%A6%96/"/>
+    <id>https://cloudqht.github.io/2022/10/29/日照涛生-龙舞刀妖/</id>
     <published>2022-10-29T13:41:18.000Z</published>
-    <updated>2022-11-13T05:46:32.867Z</updated>
+    <updated>2023-01-17T01:48:35.859Z</updated>
     
     <content type="html"><![CDATA[<p>momoho真是最喜欢的作者之二了<br>龙鳞今不在，鱼目混明珠！</p>]]></content>
     
@@ -457,56 +510,6 @@
     
     
       <category term="图" scheme="https://cloudqht.github.io/tags/%E5%9B%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>二叉排序树及其进化（平衡二叉树）</title>
-    <link href="https://cloudqht.github.io/2018/09/26/%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%E5%8F%8A%E5%85%B6%E8%BF%9B%E5%8C%96%EF%BC%88%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%89/"/>
-    <id>https://cloudqht.github.io/2018/09/26/二叉排序树及其进化（平衡二叉树）/</id>
-    <published>2018-09-26T15:14:33.000Z</published>
-    <updated>2020-07-25T06:15:37.471Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="二叉排序树（二叉查找树）"><a href="#二叉排序树（二叉查找树）" class="headerlink" title="二叉排序树（二叉查找树）"></a>二叉排序树（二叉查找树）</h1><p><strong>特点：左子树值&lt;结点值&lt;右子树值，其中序遍历序列为递增有序序列</strong> </p><ul><li><h2 id="二叉排序树的插入"><a href="#二叉排序树的插入" class="headerlink" title="二叉排序树的插入"></a>二叉排序树的插入</h2><h3 id="二叉排序树作为一种动态集合，其特点是树的结构通常不是一次生成的，而是在查找过程中当树中不存在关键字等于给定值的结点时再进行插入。插入的新结点一定是某个叶结点。"><a href="#二叉排序树作为一种动态集合，其特点是树的结构通常不是一次生成的，而是在查找过程中当树中不存在关键字等于给定值的结点时再进行插入。插入的新结点一定是某个叶结点。" class="headerlink" title="二叉排序树作为一种动态集合，其特点是树的结构通常不是一次生成的，而是在查找过程中当树中不存在关键字等于给定值的结点时再进行插入。插入的新结点一定是某个叶结点。"></a><code>二叉排序树作为一种动态集合，其特点是树的结构通常不是一次生成的，而是在查找过程中当树中不存在关键字等于给定值的结点时再进行插入。插入的新结点一定是某个叶结点。</code></h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">int BST_Insert(BiTree &amp;<span class="literal">T</span>, KeyType k)&#123;</span><br><span class="line"><span class="keyword">if</span>(<span class="literal">T</span>==<span class="literal">NULL</span>)&#123;</span><br><span class="line"><span class="literal">T</span>=(BiTree)malloc(sizeof(BSTNode));</span><br><span class="line"><span class="literal">T</span>-&gt;key=k;</span><br><span class="line"><span class="literal">T</span>-&gt;lchild=<span class="literal">NULL</span>;</span><br><span class="line"><span class="literal">T</span>-&gt;rchild=<span class="literal">NULL</span>;</span><br><span class="line"><span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(k==<span class="literal">T</span>-&gt;key)</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(k&lt;<span class="literal">T</span>-&gt;key)</span><br><span class="line"><span class="keyword">return</span> BST_Insert(<span class="literal">T</span>-&gt;lchild, k);</span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line"><span class="keyword">return</span> BST_Insert(<span class="literal">T</span>-&gt;rchild, k);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><h2 id="二叉排序树的建立"><a href="#二叉排序树的建立" class="headerlink" title="二叉排序树的建立"></a>二叉排序树的建立</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Create_BST</span><span class="params">(BiTree &amp;T, KeyType str[], <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line"><span class="comment">//用关键字数组str[]建立一个二叉排序树</span></span><br><span class="line"><span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">T=<span class="literal">NULL</span>;</span><br><span class="line"><span class="keyword">while</span>(i&lt;n)&#123;</span><br><span class="line">BST_Insert(T,str[i++]);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><h2 id="二叉排序树的非递归查找-类比线性表的二分查找"><a href="#二叉排序树的非递归查找-类比线性表的二分查找" class="headerlink" title="二叉排序树的非递归查找(类比线性表的二分查找)"></a>二叉排序树的非递归查找(类比线性表的二分查找)</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//查找函数返回指向关键字值为key的结点指针，若不存在则返回<span class="literal">NULL</span></span><br><span class="line">BSTNode *BST_Search(BiTree <span class="literal">T</span>, Elemtype key, BSTNode *&amp;p)&#123; </span><br><span class="line">p=<span class="literal">NULL</span>;//p指向被查找结点的双亲，用于插入或删除操作</span><br><span class="line"><span class="keyword">while</span>(key!=<span class="literal">T</span>-&gt;data&amp;&amp;<span class="literal">T</span>!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">p=<span class="literal">T</span>;</span><br><span class="line"><span class="keyword">if</span>(key&lt;<span class="literal">T</span>-&gt;data)</span><br><span class="line"><span class="literal">T</span>=<span class="literal">T</span>-&gt;lchild;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="literal">T</span>=<span class="literal">T</span>-&gt;rchild;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">T</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><h2 id="判断给定的二叉树是否是二叉排序树"><a href="#判断给定的二叉树是否是二叉排序树" class="headerlink" title="判断给定的二叉树是否是二叉排序树"></a>判断给定的二叉树是否是二叉排序树</h2><h3 id="中序遍历序列为递增有序序列的二叉树即为二叉排序树。"><a href="#中序遍历序列为递增有序序列的二叉树即为二叉排序树。" class="headerlink" title="中序遍历序列为递增有序序列的二叉树即为二叉排序树。"></a><code>中序遍历序列为递增有序序列的二叉树即为二叉排序树。</code></h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">KeyType <span class="attribute">predt</span>=-65535;</span><br><span class="line"></span><br><span class="line">int JudgeBST(BiTree T)&#123;</span><br><span class="line">int b1,b2;</span><br><span class="line"><span class="keyword">if</span>(<span class="attribute">T</span>==NULL)</span><br><span class="line">return 1;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line"><span class="attribute">b1</span>=JudgeBST(T-&gt;lchild);</span><br><span class="line"><span class="keyword">if</span>(<span class="attribute">b1</span>==0||T-&gt;data&lt;predt)</span><br><span class="line">return 0;</span><br><span class="line"><span class="attribute">predt</span>=T-&gt;data;</span><br><span class="line"><span class="attribute">b2</span>=JudgeBST(T-&gt;rchild);</span><br><span class="line">return b2;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h1 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h1><p>平衡二叉树是二叉排序树的演变与进化。 </p><p>二叉排序树在结点插入的顺序不同时，性能可能有所不同。 </p><p>举个极端例子，当用一个顺序序列建立二叉排序树时，结点的数量等于二叉树的高。此时查询一个结点的时间复杂度与单链表相同，为O(n)。这与我们想要的时间复杂度O($\log_2 n$)相距甚远。 </p><p>由于二叉排序树的性能与其高度息息相关，为避免出现性能下降的情况，则在插入结点时要充分利用其高度，避免其增长过快。由此，平衡二叉树诞生了。 </p><p>平衡二叉树（AVL树）保证在插入和删除结点后，二叉树任意节点的左、右子树高度差绝对值不超过1。定义结点左右子树的高度差为结点的平衡因子。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;二叉排序树（二叉查找树）&quot;&gt;&lt;a href=&quot;#二叉排序树（二叉查找树）&quot; class=&quot;headerlink&quot; title=&quot;二叉排序树（二叉查找树）&quot;&gt;&lt;/a&gt;二叉排序树（二叉查找树）&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;特点：左子树值&amp;lt;结点值&amp;lt;右子树值
-      
-    
-    </summary>
-    
-      <category term="数据结构" scheme="https://cloudqht.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="二叉树" scheme="https://cloudqht.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>完全二叉树的鉴别</title>
-    <link href="https://cloudqht.github.io/2018/09/26/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%89%B4%E5%88%AB/"/>
-    <id>https://cloudqht.github.io/2018/09/26/完全二叉树的鉴别/</id>
-    <published>2018-09-26T10:38:52.000Z</published>
-    <updated>2020-07-25T06:15:37.487Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="利用完全二叉树的性质鉴别"><a href="#利用完全二叉树的性质鉴别" class="headerlink" title="利用完全二叉树的性质鉴别"></a>利用完全二叉树的性质鉴别</h2><h3 id="完全二叉树的1-n结点与满二叉树相同"><a href="#完全二叉树的1-n结点与满二叉树相同" class="headerlink" title="完全二叉树的1-n结点与满二叉树相同"></a><code>完全二叉树的1-n结点与满二叉树相同</code></h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">bool isComplete(BiTree T)&#123;</span><br><span class="line"><span class="keyword">if</span>(!T)</span><br><span class="line"><span class="keyword">return</span> <span class="number">1</span>;<span class="comment">//空二叉树为完全二叉树</span></span><br><span class="line">InitQueue Q;</span><br><span class="line">BiTree p;</span><br><span class="line">EnQueue(Q,T);</span><br><span class="line"><span class="keyword">while</span>(!IsEmpty(Q))&#123;</span><br><span class="line">DeQueue(Q,p);</span><br><span class="line"><span class="keyword">if</span>(p)&#123;</span><br><span class="line">EnQueue(Q,p-&gt;lchild);</span><br><span class="line">EnQueue(Q,p-&gt;rchild);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line"><span class="keyword">while</span>(!IsEmpty(Q))&#123;</span><br><span class="line">DeQueue(Q,p);</span><br><span class="line"><span class="keyword">if</span>(p)</span><br><span class="line"><span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;利用完全二叉树的性质鉴别&quot;&gt;&lt;a href=&quot;#利用完全二叉树的性质鉴别&quot; class=&quot;headerlink&quot; title=&quot;利用完全二叉树的性质鉴别&quot;&gt;&lt;/a&gt;利用完全二叉树的性质鉴别&lt;/h2&gt;&lt;h3 id=&quot;完全二叉树的1-n结点与满二叉树相同&quot;&gt;&lt;a hr
-      
-    
-    </summary>
-    
-      <category term="数据结构" scheme="https://cloudqht.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="二叉树" scheme="https://cloudqht.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
   </entry>
   
