@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cloudqht.github.io/"/>
-  <updated>2023-01-17T01:59:13.990Z</updated>
+  <updated>2023-01-17T02:08:00.119Z</updated>
   <id>https://cloudqht.github.io/</id>
   
   <author>
@@ -21,18 +21,15 @@
     <link href="https://cloudqht.github.io/2023/01/17/maven-scope-%E5%A4%A7%E5%9D%91/"/>
     <id>https://cloudqht.github.io/2023/01/17/maven-scope-大坑/</id>
     <published>2023-01-17T01:52:20.000Z</published>
-    <updated>2023-01-17T01:59:13.990Z</updated>
+    <updated>2023-01-17T02:08:00.119Z</updated>
     
-    <content type="html"><![CDATA[<p>罪魁祸首： </p><pre><code>&lt;dependency&gt;    &lt;groupId&gt;org.ssssssss&lt;/groupId&gt;    &lt;artifactId&gt;magic-api-plugin-git&lt;/artifactId&gt;    &lt;version&gt;2.0.2&lt;/version&gt;&lt;!--&lt;scope&gt;test&lt;/scope&gt;--&gt;&lt;/dependency&gt;</code></pre><p>scope的值有以下几个：compile、test、provided、runtime、system。</p><p>（1）compile：这个也是scope的默认值，表示这个Jar文件与程序一起进行编译。如果在我们的程序中使用了其他的Jar包，而没有把这个依赖的Jar文件一起进行编译，就会提示：找不到指定的类（Class）。即：将这个依赖的Jar文件放在ClassPath中，从而让我们的程序可以找到这个Jar文件，将我们的程序打成War文件时候，就会将compile的Jar文件也一起放进来。</p><p><strong>（2）test：用于表示这个Jar文件只有在test阶段的时候使用，在我们进行·mvn package·的时候，并不会将这个依赖的Jar文件一起进行打包。只有在·mvn test·时候才使用的Jar文件，从而完成我们的测试用例。</strong></p><p>（3）provided：provided表示提供，由正式运行环境提供这个Jar文件，本程序不提供。当我们程序想使用某一个类的时候，如果不引入对应的Jar文件，就会提示找不到类，而我们又不想将这个Jar文件一起打包的时候，使用provided。provided这个Jar文件只是让我们的程序可以编译通过，由运行环境提供这个Jar文件。</p><p>（4）runtime：在程序运行的时候使用这个Jar文件，而在我们的程序中没有使用Jar文件。例如：我们程序使用了一个第三方Jar文件（A.jar），而这个第三方Jar文件中使用了某一个Jar（B.jar），而B.jar的scope为provided，表示由正式运行程序提供，我们的程序虽然没有使用B.jar中的类，当时我们也必须将B.jar进行依赖，从而使A.jar可以找到B.Jar文件，这时候将B.jar设置为runtime，表示运行时候加入这个Jar文件。这个Jar文件会打包到我们的程序中。</p><p>（5）system：与provided相同，只是从运行的系统找对应的Jar文件，必须与<systempath>配合使用，指定Jar文件所在的位置。</systempath></p>]]></content>
+    <content type="html"><![CDATA[<p>罪魁祸首:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.ssssssss<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>magic-api-plugin-git<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--&lt;scope&gt;test&lt;/scope&gt;--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></p><p>scope的值有以下几个：compile、test、provided、runtime、system。</p><p>（1）compile：这个也是scope的默认值，表示这个Jar文件与程序一起进行编译。如果在我们的程序中使用了其他的Jar包，而没有把这个依赖的Jar文件一起进行编译，就会提示：找不到指定的类（Class）。即：将这个依赖的Jar文件放在ClassPath中，从而让我们的程序可以找到这个Jar文件，将我们的程序打成War文件时候，就会将compile的Jar文件也一起放进来。</p><p>（2）test：用于表示这个Jar文件只有在test阶段的时候使用，在我们进行·mvn package·的时候，并不会将这个依赖的Jar文件一起进行打包。只有在·mvn test·时候才使用的Jar文件，从而完成我们的测试用例。**</p><p>（3）provided：provided表示提供，由正式运行环境提供这个Jar文件，本程序不提供。当我们程序想使用某一个类的时候，如果不引入对应的Jar文件，就会提示找不到类，而我们又不想将这个Jar文件一起打包的时候，使用provided。provided这个Jar文件只是让我们的程序可以编译通过，由运行环境提供这个Jar文件。</p><p>（4）runtime：在程序运行的时候使用这个Jar文件，而在我们的程序中没有使用Jar文件。例如：我们程序使用了一个第三方Jar文件（A.jar），而这个第三方Jar文件中使用了某一个Jar（B.jar），而B.jar的scope为provided，表示由正式运行程序提供，我们的程序虽然没有使用B.jar中的类，当时我们也必须将B.jar进行依赖，从而使A.jar可以找到B.Jar文件，这时候将B.jar设置为runtime，表示运行时候加入这个Jar文件。这个Jar文件会打包到我们的程序中。</p><p>（5）system：与provided相同，只是从运行的系统找对应的Jar文件，必须与<systempath>配合使用，指定Jar文件所在的位置。</systempath></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;罪魁祸首： &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;org.ssssssss&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;magic-api-plugin-git&amp;lt;/a
+        &lt;p&gt;罪魁祸首:&lt;br&gt;&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;
       
     
     </summary>
