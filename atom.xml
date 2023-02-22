@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cloudqht.github.io/"/>
-  <updated>2023-01-17T02:13:44.830Z</updated>
+  <updated>2023-02-22T01:45:04.312Z</updated>
   <id>https://cloudqht.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AOP后获取代理bean的原始对象</title>
+    <link href="https://cloudqht.github.io/2023/02/22/AOP%E5%90%8E%E8%8E%B7%E5%8F%96%E4%BB%A3%E7%90%86bean%E7%9A%84%E5%8E%9F%E5%A7%8B%E5%AF%B9%E8%B1%A1/"/>
+    <id>https://cloudqht.github.io/2023/02/22/AOP后获取代理bean的原始对象/</id>
+    <published>2023-02-22T01:30:04.000Z</published>
+    <updated>2023-02-22T01:45:04.312Z</updated>
+    
+    <content type="html"><![CDATA[<p>在使用aop的过程中遇见一个问题：  </p><p>当使用</p><p><code>@Pointcut(&quot;execution (* org.xxx.xxx.xx.xx(..))&quot;)</code></p><p>后，使用<code>@Before</code>织入，此时织入切点的bean默认由aop机制中的cglib动态代理进行代理，会创建一个代理bean，此时用<code>SprintContextUtil.getBean()</code>方法获取此bean的name，获取到的bean即为代理bean，而后在此基础上的反射操作获取的对象属性为Null。  </p><p>解决方法：  </p><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> class AopTargetUtil &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取 目标对象</span></span><br><span class="line"><span class="comment">     * @param proxy 代理对象</span></span><br><span class="line"><span class="comment">     * @return</span></span><br><span class="line"><span class="comment">     * @throws Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">Object</span> getTarget(<span class="keyword">Object</span> proxy) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(!AopUtils.isAopProxy(proxy)) &#123;</span><br><span class="line">            <span class="keyword">return</span> proxy;<span class="comment">//不是代理对象</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(AopUtils.isJdkDynamicProxy(proxy)) &#123;</span><br><span class="line">            <span class="keyword">return</span> getJdkDynamicProxyTargetObject(proxy);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">//cglib</span></span><br><span class="line">            <span class="keyword">return</span> getCglibProxyTargetObject(proxy);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">Object</span> getCglibProxyTargetObject(<span class="keyword">Object</span> proxy) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        Field h = proxy.getClass().getDeclaredField(<span class="string">"CGLIB$CALLBACK_0"</span>);</span><br><span class="line">        h.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">        <span class="keyword">Object</span> dynamicAdvisedInterceptor = h.<span class="built_in">get</span>(proxy);</span><br><span class="line"></span><br><span class="line">        Field advised = dynamicAdvisedInterceptor.getClass().getDeclaredField(<span class="string">"advised"</span>);</span><br><span class="line">        advised.setAccessible(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">Object</span> target = ((AdvisedSupport)advised.<span class="built_in">get</span>(dynamicAdvisedInterceptor)).getTargetSource().getTarget();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> target;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">Object</span> getJdkDynamicProxyTargetObject(<span class="keyword">Object</span> proxy) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        Field h = proxy.getClass().getSuperclass().getDeclaredField(<span class="string">"h"</span>);</span><br><span class="line">        h.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">        AopProxy aopProxy = (AopProxy) h.<span class="built_in">get</span>(proxy);</span><br><span class="line"></span><br><span class="line">        Field advised = aopProxy.getClass().getDeclaredField(<span class="string">"advised"</span>);</span><br><span class="line">        advised.setAccessible(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">Object</span> target = ((AdvisedSupport)advised.<span class="built_in">get</span>(aopProxy)).getTargetSource().getTarget();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> target;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在使用aop的过程中遇见一个问题：  &lt;/p&gt;
+&lt;p&gt;当使用&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;@Pointcut(&amp;quot;execution (* org.xxx.xxx.xx.xx(..))&amp;quot;)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;后，使用&lt;code&gt;@Before&lt;/c
+      
+    
+    </summary>
+    
+      <category term="SpringBoot" scheme="https://cloudqht.github.io/categories/SpringBoot/"/>
+    
+    
+      <category term="SpringBoot" scheme="https://cloudqht.github.io/tags/SpringBoot/"/>
+    
+  </entry>
   
   <entry>
     <title>maven &lt;scope&gt;大坑</title>
@@ -482,31 +510,6 @@
     
     
       <category term="git常用命令" scheme="https://cloudqht.github.io/tags/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>BFS&amp;DFS</title>
-    <link href="https://cloudqht.github.io/2018/10/04/BFS-DFS/"/>
-    <id>https://cloudqht.github.io/2018/10/04/BFS-DFS/</id>
-    <published>2018-10-04T15:50:28.000Z</published>
-    <updated>2020-07-25T06:15:37.471Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="BFS（Breadth-First-Search-广度优先搜索"><a href="#BFS（Breadth-First-Search-广度优先搜索" class="headerlink" title="BFS（Breadth-First-Search,广度优先搜索)"></a>BFS（Breadth-First-Search,广度优先搜索)</h2><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool </span>visited[MAX_VERTEX_NUM]<span class="comment">;</span></span><br><span class="line">void <span class="keyword">BFSTraverse(Graph </span>G)&#123;</span><br><span class="line">for(i=<span class="number">0</span><span class="comment">;i&lt;G.vexnum;i++)&#123;</span></span><br><span class="line">visited[i]=FALSE<span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line">InitQueue(Q)<span class="comment">;</span></span><br><span class="line">for(i=<span class="number">0</span><span class="comment">;i&lt;G.vexnum;i++)</span></span><br><span class="line">if(!visited[i])</span><br><span class="line"><span class="keyword">BFS(G,i);</span></span><br><span class="line"><span class="keyword">&#125;</span></span><br><span class="line"><span class="keyword">void </span><span class="keyword">BFS(Graph </span>G, int v)&#123;</span><br><span class="line">visit(v)<span class="comment">;</span></span><br><span class="line">visited[v]=TRUE<span class="comment">;</span></span><br><span class="line">Enqueue(Q,v)<span class="comment">;</span></span><br><span class="line">while(!isEmpty(Q))&#123;</span><br><span class="line">Dequeue(Q,v)<span class="comment">;</span></span><br><span class="line">for(w=FirstNeighbor(G,v)<span class="comment">;w&gt;=0;w=NextNeighbor(G,V,W))&#123;</span></span><br><span class="line">if(!isvisited(w))</span><br><span class="line">visit(w)<span class="comment">;</span></span><br><span class="line">visited[w]=TRUE<span class="comment">;</span></span><br><span class="line">Enqueue(Q,w)<span class="comment">;</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="DFS（Depth-First-Search-深度优先搜索"><a href="#DFS（Depth-First-Search-深度优先搜索" class="headerlink" title="DFS（Depth-First-Search,深度优先搜索)"></a>DFS（Depth-First-Search,深度优先搜索)</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">bool visited[MAX_VERTEX_NUM];</span><br><span class="line">void DFSTraverse(Graph G)&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="attribute">v</span>=0;v&lt;G.vexnum;++v)</span><br><span class="line">visited[v]=<span class="literal">FALSE</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="attribute">v</span>=0;v&lt;G.vexnum;++v)</span><br><span class="line"><span class="keyword">if</span>(!visited[v])</span><br><span class="line">DFS(G,v);</span><br><span class="line">&#125;</span><br><span class="line">void DFS(Graph G, int v)&#123;</span><br><span class="line">visit(v);</span><br><span class="line">visited[v]=<span class="literal">TRUE</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="attribute">w</span>=FirstNeighbor(G,v);w&gt;=0;w=NextNeighbor(G,v,w))&#123;</span><br><span class="line"><span class="keyword">if</span>(!visited[w])</span><br><span class="line">DFS(G,w);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;BFS（Breadth-First-Search-广度优先搜索&quot;&gt;&lt;a href=&quot;#BFS（Breadth-First-Search-广度优先搜索&quot; class=&quot;headerlink&quot; title=&quot;BFS（Breadth-First-Search,广度优先搜
-      
-    
-    </summary>
-    
-      <category term="数据结构" scheme="https://cloudqht.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="图" scheme="https://cloudqht.github.io/tags/%E5%9B%BE/"/>
     
   </entry>
   
