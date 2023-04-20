@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://cloudqht.github.io/"/>
-  <updated>2023-02-22T01:45:04.312Z</updated>
+  <updated>2023-04-20T01:37:15.525Z</updated>
   <id>https://cloudqht.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>@Lazy注解-解决循环依赖</title>
+    <link href="https://cloudqht.github.io/2023/04/20/@Lazy%E6%B3%A8%E8%A7%A3-%E8%A7%A3%E5%86%B3%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96/"/>
+    <id>https://cloudqht.github.io/2023/04/20/@Lazy注解-解决循环依赖/</id>
+    <published>2023-04-20T00:38:58.000Z</published>
+    <updated>2023-04-20T01:37:15.525Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>当@Lazy 放在类上，表示在启动的时候不会创建bean对象，当使用的时候才会创建  </li><li>当@Lazy 放在@Bean注解的方法上，表示在启动的时候不会创建bean对象，当使用的时候才会创建  </li><li>当@Lazy 放在@Autowired注解的属性上， 并不会直接给属性赋上真正的值，只是会赋值一个代理对象，当真正使用到这个属性的时候，才回去容器中找到一个符合的对象。在使用的时候，也会先执行代理对象的逻辑，然后再是真正bean对象的逻辑  </li><li>使用场景：循环依赖的时候可以在循环依赖的对象加上@Lazy注解  </li><li>写在方法或者方法参数前面上，效果和写在属性上是一样的，开始注入的只是代理对象，当真正调用的时候才会调用对应对象的逻辑  </li><li>写在构造方法或者构造方法参数前面上，同上<br>详细源码分析：<a href="https://blog.csdn.net/qq_35971258/article/details/128273615" target="_blank" rel="noopener">https://blog.csdn.net/qq_35971258/article/details/128273615</a></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;当@Lazy 放在类上，表示在启动的时候不会创建bean对象，当使用的时候才会创建  &lt;/li&gt;
+&lt;li&gt;当@Lazy 放在@Bean注解的方法上，表示在启动的时候不会创建bean对象，当使用的时候才会创建  &lt;/li&gt;
+&lt;li&gt;当@Lazy 放在@Autowi
+      
+    
+    </summary>
+    
+      <category term="SpringBoot" scheme="https://cloudqht.github.io/categories/SpringBoot/"/>
+    
+    
+      <category term="SpringBoot" scheme="https://cloudqht.github.io/tags/SpringBoot/"/>
+    
+  </entry>
   
   <entry>
     <title>AOP后获取代理bean的原始对象</title>
@@ -485,31 +513,6 @@
     
     
       <category term="字符串" scheme="https://cloudqht.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>git常用命令</title>
-    <link href="https://cloudqht.github.io/2019/02/17/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
-    <id>https://cloudqht.github.io/2019/02/17/git常用命令/</id>
-    <published>2019-02-17T04:17:38.000Z</published>
-    <updated>2020-07-25T06:15:37.471Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">git init <span class="comment">//初始化本地git环境</span></span><br><span class="line">git clone XXX<span class="comment">//克隆一份代码到本地仓库</span></span><br><span class="line">git pull <span class="comment">//把远程库的代码更新到工作台</span></span><br><span class="line">git pull --rebase origin master <span class="comment">//强制把远程库的代码跟新到当前分支上面</span></span><br><span class="line">git fetch <span class="comment">//把远程库的代码更新到本地库</span></span><br><span class="line">git add . <span class="comment">//把本地的修改加到stage中</span></span><br><span class="line">git commit -<span class="keyword">m</span> 'comments here' <span class="comment">//把stage中的修改提交到本地库</span></span><br><span class="line">git push <span class="comment">//把本地库的修改提交到远程库中</span></span><br><span class="line">git branch -r/-a <span class="comment">//查看远程分支/全部分支</span></span><br><span class="line">git checkout master/branch <span class="comment">//切换到某个分支</span></span><br><span class="line">git checkout -b <span class="keyword">test</span> <span class="comment">//新建test分支</span></span><br><span class="line">git checkout -<span class="keyword">d</span> <span class="keyword">test</span> <span class="comment">//删除test分支</span></span><br><span class="line">git <span class="keyword">merge</span> master <span class="comment">//假设当前在test分支上面，把master分支上的修改同步到test分支上</span></span><br><span class="line">git <span class="keyword">merge</span> tool <span class="comment">//调用merge工具</span></span><br><span class="line">git stash <span class="comment">//把未完成的修改缓存到栈容器中</span></span><br><span class="line">git stash <span class="keyword">list</span> <span class="comment">//查看所有的缓存</span></span><br><span class="line">git stash pop <span class="comment">//恢复本地分支到缓存状态</span></span><br><span class="line">git blame someFile <span class="comment">//查看某个文件的每一行的修改记录（）谁在什么时候修改的）</span></span><br><span class="line">git status <span class="comment">//查看当前分支有哪些修改</span></span><br><span class="line">git <span class="keyword">log</span> <span class="comment">//查看当前分支上面的日志信息</span></span><br><span class="line">git diff <span class="comment">//查看当前没有add的内容</span></span><br><span class="line">git diff --cache <span class="comment">//查看已经add但是没有commit的内容</span></span><br><span class="line">git diff HEAD <span class="comment">//上面两个内容的合并</span></span><br><span class="line">git reset --hard HEAD <span class="comment">//撤销本地修改</span></span><br><span class="line">echo <span class="variable">$HOME</span> <span class="comment">//查看git config的HOME路径</span></span><br><span class="line">export <span class="variable">$HOME</span>=/c/gitconfig <span class="comment">//配置git config的HOME路径</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;figure class=&quot;highlight stata&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class
-      
-    
-    </summary>
-    
-      <category term="git" scheme="https://cloudqht.github.io/categories/git/"/>
-    
-    
-      <category term="git常用命令" scheme="https://cloudqht.github.io/tags/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
     
   </entry>
   
